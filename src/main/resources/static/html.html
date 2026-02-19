@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"> ❶
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Login</title>
 </head>
 <body>
-<h1>Products</h1>
-<h2>View products</h2>
-<table>
-    <tr>
-        <th>PRODUCT NAME</th>
-        <th>PRODUCT PRICE</th>
-    </tr>
-    <tr th:each="p: ${products}" >
-        <td th:text="${p.name}"></td>
-        <td th:text="${p.price}"></td>
-    </tr>
-</table>
+<form action="/" method="post">
+    Username: <input type="text" name="username" /><br />
+    Password: <input type="password" name="password" /><br />
+    <button type="submit">Log in</button>
+</form>
+<p th:text="${message}"></p>
 </body>
 </html>
