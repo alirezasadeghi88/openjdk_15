@@ -16,12 +16,18 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String home() {
-        String username =
-                loggedUserManagementService.getUsername();
+    public String home(
+            @RequestParam(required = false) String logout, 
+            Model model 
+    ) {
+        if (logout != null) { 
+            loggedUserManagementService.setUsername(null);
+        }
+        String username = loggedUserManagementService.getUsername();
         if (username == null) {
             return "redirect:/";
         }
+        model.addText("username"); 
         return "main.html";
     }
 }
